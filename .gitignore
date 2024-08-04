@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# Unignore specific files
+!.gitignore
+!.zshrc
+!.tmux.conf
+!.ideavimrc
+!.config/
+
+# Keep ignored inside .config
+.config/yarn

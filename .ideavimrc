@@ -1,0 +1,83 @@
+" -- General --
+set scrolloff=5
+set surround
+set easymotion
+set ideajoin
+
+set NERDTree
+Plug 'preservim/nerdtree'
+Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
+Plug 'nerdtree'
+
+let mapleader ="\<Space>"
+
+" -- Usefully --
+imap jk <Esc>
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap zc :action CollapseRegion<cr>
+nnoremap zo :action ExpandRegion<cr>
+
+" -- Actions --
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+nmap gh <Action>(ShowHoverInfo)
+nmap <C-j> <Action>(MoveLineDown)
+nmap <C-k> <Action>(MoveLineUp)
+
+" -- Git --
+nmap <leader>vp :action Vcs.Push<cr>
+nnoremap <leader>vc :action CheckinProject<cr>
+nmap <leader>vu :action Vcs.UpdateProject<cr>
+nmap <leader>vB :action Git.Branches<cr>
+
+" -- Navigation --
+" - File -
+nnoremap <leader>fs :action GotoSymbol<cr>
+nnoremap <leader>fa :action GotoAction<cr>
+noremap <leader>ff :action GotoFile<cr>
+noremap <leader>ft :action GotoTest<cr>
+noremap <leader>fe :action SearchEverywhere<cr>
+noremap <leader>fp :action FindInPath<cr>
+noremap <leader>ne :action GotoNextError<cr>
+noremap <leader>rF :action RecentChangedFiles<cr>
+noremap <leader>rf :action RecentFiles<cr>
+nnoremap <leader>fs :action FileStructurePopup<cr>
+nnoremap <S-h> :action PreviousTab<cr>
+nnoremap <S-l> :action NextTab<cr>
+nnoremap <S-k> :action PreviousTab<cr>
+nnoremap <S-j> :action NextTab<cr>
+
+" -- Refactor --
+nnoremap <leader>rc :action ReformatCode<cr>
+nnoremap <leader>sw :action SurroundWith<cr>
+nnoremap <leader>oi :action OptimizeImports<cr>
+nnoremap <leader>tz :action ToggleZenMode<cr>
+nnoremap <leader>ns :action NewScratchFile<cr>
+nnoremap <leader>ic :action InspectCode<cr>
+noremap <leader>re :action RenameElement<cr>
+
+noremap <leader>iv :action IntroduceVariable<cr>
+noremap <leader>em :action ExtractMethod<cr>
+noremap <leader>ic :action IntroduceConstant<cr>
+noremap <leader>ip :action IntroduceParameter<cr>
+noremap <leader>if :action IntroduceField<cr>
+noremap <leader>po :action IntroduceParameterObject<cr>
+
+" -- Window Management --
+" Delete the current window
+nnoremap <leader>wd :action CloseContent<cr>
+
+" Delete all windows
+nnoremap <leader>wD :action CloseAllEditors<cr>
+
+" Split
+nnoremap <leader>sv :action SplitVertically<cr>
+nnoremap <leader>sh :action SplitHorizontally<cr>
+" -- Window Navigation --
+nnoremap <leader>H <C-w>h
+nnoremap <leader>L <C-w>l
+
+
