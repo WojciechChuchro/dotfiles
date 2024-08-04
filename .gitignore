@@ -10,3 +10,4 @@
 
 # Keep ignored inside .config
 .config/yarn
+**.DS_STORE
