@@ -14,7 +14,10 @@ Plug 'nerdtree'
 let mapleader ="\<Space>"
 
 " -- Usefully --
+set visualbell
+set noerrorbells
 imap jk <Esc>
+imap kj <Esc>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap zc :action CollapseRegion<cr>
@@ -49,6 +52,8 @@ nnoremap <S-h> :action PreviousTab<cr>
 nnoremap <S-l> :action NextTab<cr>
 nnoremap <S-k> :action PreviousTab<cr>
 nnoremap <S-j> :action NextTab<cr>
+nmap <C-j> :m+1<CR>
+nmap <C-k> :m-2<CR>
 
 " -- Refactor --
 nnoremap <leader>rc :action ReformatCode<cr>
@@ -63,8 +68,8 @@ noremap <leader>iv :action IntroduceVariable<cr>
 noremap <leader>em :action ExtractMethod<cr>
 noremap <leader>ic :action IntroduceConstant<cr>
 noremap <leader>ip :action IntroduceParameter<cr>
-noremap <leader>if :action IntroduceField<cr>
 noremap <leader>po :action IntroduceParameterObject<cr>
+noremap <leader>if :action IntroduceField<cr>
 
 " -- Window Management --
 " Delete the current window
@@ -76,8 +81,15 @@ nnoremap <leader>wD :action CloseAllEditors<cr>
 " Split
 nnoremap <leader>sv :action SplitVertically<cr>
 nnoremap <leader>sh :action SplitHorizontally<cr>
-" -- Window Navigation --
-nnoremap <leader>H <C-w>h
-nnoremap <leader>L <C-w>l
 
+" Harpoon
+nmap <C-1> <action>(HarpoonerOpenFile0)
+nmap <C-2> <action>(HarpoonerOpenFile1)
+nmap <C-3> <action>(HarpoonerOpenFile2)
+nmap <C-4> <action>(HarpoonerOpenFile3)
 
+nmap <C-e> <action>(HarpoonerQuickMenu)
+nmap <leader>ha <action>(HarpoonerAddFile)
+
+" Yank to clipboard
+set clipboard+=unnamed
