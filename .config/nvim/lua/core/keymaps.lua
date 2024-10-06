@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 -- General keymaps
-
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "kj", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>wq", ":wq<CR>", {desc = "Save and quit file"}) -- save and quit
 keymap.set("n", "<leader>qq", ":q!<CR>", {desc = "Quit without saving"}) -- quit without saving
 keymap.set("n", "<leader>ww", ":w<CR>", {desc = "Save file"}) -- save
@@ -71,19 +71,16 @@ keymap.set('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_
 keymap.set('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, {desc = "Find LSP document symbols"})
 keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {desc = "Find LSP incoming calls"})
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end, {desc = "Find treesitter method"})
+keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 
 -- Harpoon
 keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, {desc = "Harpoon add file"})
-keymap.set("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu, {desc = "Harpoon toggle quick menu"})
-keymap.set("n", "<leader>h1", function() require("harpoon.ui").nav_file(1) end, {desc = "Harpoon navigate to file 1"})
-keymap.set("n", "<leader>h2", function() require("harpoon.ui").nav_file(2) end, {desc = "Harpoon navigate to file 2"})
-keymap.set("n", "<leader>h3", function() require("harpoon.ui").nav_file(3) end, {desc = "Harpoon navigate to file 3"})
-keymap.set("n", "<leader>h4", function() require("harpoon.ui").nav_file(4) end, {desc = "Harpoon navigate to file 4"})
-keymap.set("n", "<leader>h5", function() require("harpoon.ui").nav_file(5) end, {desc = "Harpoon navigate to file 5"})
-keymap.set("n", "<leader>h6", function() require("harpoon.ui").nav_file(6) end, {desc = "Harpoon navigate to file 6"})
-keymap.set("n", "<leader>h7", function() require("harpoon.ui").nav_file(7) end, {desc = "Harpoon navigate to file 7"})
-keymap.set("n", "<leader>h8", function() require("harpoon.ui").nav_file(8) end, {desc = "Harpoon navigate to file 8"})
-keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end, {desc = "Harpoon navigate to file 9"})
+keymap.set("n", "<C-e>", require("harpoon.ui").toggle_quick_menu, {desc = "Harpoon toggle quick menu"})
+keymap.set("n", "<leader>1", function() require("harpoon.ui").nav_file(1) end, {desc = "Harpoon navigate to file 1"})
+keymap.set("n", "<leader>2", function() require("harpoon.ui").nav_file(2) end, {desc = "Harpoon navigate to file 2"})
+keymap.set("n", "<leader>3", function() require("harpoon.ui").nav_file(3) end, {desc = "Harpoon navigate to file 3"})
+keymap.set("n", "<leader>4", function() require("harpoon.ui").nav_file(4) end, {desc = "Harpoon navigate to file 4"})
+keymap.set("n", "<leader>5", function() require("harpoon.ui").nav_file(5) end, {desc = "Harpoon navigate to file 5"})
 
 -- LSP
 keymap.set('n', '<leader>gg', '<cmd>lua vim.lsp.buf.hover()<CR>', {desc = "LSP hover"})
@@ -124,11 +121,12 @@ keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
 
 -- Filetype-specific keymaps (these can be done in the ftplugin directory instead if you prefer)
-keymap.set("n", '<leader>go', function()
+keymap.set("n", '<leader>oi', function()
   if vim.bo.filetype == 'java' then
     require('jdtls').organize_imports();
   end
 end)
+-- TODO: hello
 
 keymap.set("n", '<leader>gu', function()
   if vim.bo.filetype == 'java' then
@@ -147,3 +145,17 @@ keymap.set("n", '<leader>tm', function()
     require('jdtls').test_nearest_method();
   end
 end)
+-- todo-comments
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- You can also specify a list of valid jump keywords
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
+end, { desc = "Next error/warning todo comment" })

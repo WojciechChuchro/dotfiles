@@ -106,6 +106,10 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias c='clear'
+alias spring-start='mvn spring-boot:run'
+alias spring-debug='mvn spring-boot:run -Dspring-boot.run.arguments=--debug'
+
 
 
 # Load Angular CLI autocompletion.

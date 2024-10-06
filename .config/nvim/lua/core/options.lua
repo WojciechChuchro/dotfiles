@@ -7,6 +7,8 @@ opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
 opt.relativenumber = true
 opt.number = true
 
+opt.termguicolors = true
+
 -- Tabs & Indentation
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -31,6 +33,15 @@ opt.signcolumn = "yes"
 vim.diagnostic.config {
   float = { border = "rounded" }, -- add border to diagnostic popups
 }
+-- Set transparent background
+vim.cmd [[
+    highlight Normal ctermbg=none guibg=none
+    highlight NonText ctermbg=none guibg=none
+    highlight LineNr ctermbg=none guibg=none
+    highlight SignColumn ctermbg=none guibg=none
+    highlight EndOfBuffer ctermbg=none guibg=none
+]]
+
 
 -- Backspace
 opt.backspace = "indent,eol,start"

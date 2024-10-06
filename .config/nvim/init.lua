@@ -28,7 +28,6 @@ require("lazy").setup({
     notify = false, -- turn off notifications whenever plugin changes are made
   },
 })
-
 -- These modules are not loaded by lazy
 require("core.options")
 require("core.keymaps")
