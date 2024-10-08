@@ -9,6 +9,9 @@ keymap.set("n", "<leader>wq", ":wq<CR>", {desc = "Save and quit file"}) -- save 
 keymap.set("n", "<leader>qq", ":q!<CR>", {desc = "Quit without saving"}) -- quit without saving
 keymap.set("n", "<leader>ww", ":w<CR>", {desc = "Save file"}) -- save
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>", {desc = "Open URL under cursor"}) -- open URL under cursor
+-- Clear search highlights mapping
+keymap.set("n", "<leader>nn", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v", {desc = "Split window vertically"}) -- split window vertically
@@ -21,12 +24,12 @@ keymap.set("n", "<leader>sl", "<C-w>>5", {desc = "Make split windows width bigge
 keymap.set("n", "<leader>sh", "<C-w><5", {desc = "Make split windows width smaller"}) -- make split windows width smaller
 
 -- Tab management
-keymap.set("n", "<leader>to", ":tabnew<CR>", {desc = "Open a new tab"}) -- open a new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>", {desc = "Close current tab"}) -- close a tab
-keymap.set("n", "<leader>tn", ":tabn<CR>", {desc = "Next tab"}) -- next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>", {desc = "Previous tab"}) -- previous tab
+-- keymap.set("n", "<leader>to", ":tabnew<CR>", {desc = "Open a new tab"}) -- open a new tab
+-- keymap.set("n", "<leader>tx", ":tabclose<CR>", {desc = "Close current tab"}) -- close a tab
+-- keymap.set("n", "<leader>tn", ":tabn<CR>", {desc = "Next tab"}) -- next tab
+-- keymap.set("n", "<leader>tp", ":tabp<CR>", {desc = "Previous tab"}) -- previous tab
 
--- Vim REST Console
+-- Vim REST Console 
 keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>", {desc = "Run REST query"}) -- Run REST query
 
 -- Diff keymaps
