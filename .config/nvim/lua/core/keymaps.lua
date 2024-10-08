@@ -46,12 +46,22 @@ keymap.set("n", "<leader>qc", ":cclose<CR>", {desc = "Close quickfix list"}) -- 
 keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", {desc = "Toggle file explorer"}) -- toggle file explorer
 keymap.set("n", "<leader>er", ":NvimTreeFocus<CR>", {desc = "Toggle focus to file explorer"}) -- toggle focus to file explorer
 keymap.set("n", "<leader>ef", ":NvimTreeFindFile<CR>", {desc = "Find file in file explorer"}) -- find file in file explorer
+keymap.set(
+    "n",
+    "<leader>ef",
+    "<cmd>NvimTreeFindFileToggle<CR>",
+    { desc = "Toggle file explorer on current file" }
+) -- toggle file explorer on current file
+keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 
 -- Telescope
 keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, {desc = "Find files"})
 keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, {desc = "Live grep"})
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end, {desc = "Find treesitter method"})
 keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 
 -- Harpoon
 keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, {desc = "Harpoon add file"})
@@ -61,7 +71,12 @@ keymap.set("n", "<leader>2", function() require("harpoon.ui").nav_file(2) end, {
 keymap.set("n", "<leader>3", function() require("harpoon.ui").nav_file(3) end, {desc = "Harpoon navigate to file 3"})
 keymap.set("n", "<leader>4", function() require("harpoon.ui").nav_file(4) end, {desc = "Harpoon navigate to file 4"})
 keymap.set("n", "<leader>5", function() require("harpoon.ui").nav_file(5) end, {desc = "Harpoon navigate to file 5"})
-
+--substitute TODO: What is this doing??
+-- local substitute = require("substitute")
+-- keymap.set("n", "s", substitute.operator, { desc = "Substitute with motion" })
+-- keymap.set("n", "ss", substitute.line, { desc = "Substitute line" })
+-- keymap.set("n", "S", substitute.eol, { desc = "Substitute to end of line" })
+-- keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
 -- Trouble
 keymap.set('n', '<leader>xw', '<cmd>Trouble diagnostics toggle<CR>', { desc = "Open trouble workspace diagnostics" })
 keymap.set('n', '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', { desc = "Open trouble document diagnostics" })
@@ -146,6 +161,10 @@ vim.keymap.set("n", "]t", function()
 end, { desc = "Next error/warning todo comment" })
 
 -- WARNING: 
+-- what is this doing here? do i really need those keymaps?
+keymap.set("n", "<leader>l", function()
+    require("lint").try_lint()
+end, { desc = "Trigger linting for current file" })
 -- Split window management
 -- keymap.set("n", "<leader>sv", "<C-w>v", {desc = "Split window vertically"}) -- split window vertically
 -- keymap.set("n", "<leader>sh", "<C-w>s", {desc = "Split window horizontally"}) -- split window horizontally

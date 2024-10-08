@@ -1,12 +1,15 @@
 -- Markdown specific settings
-vim.opt.wrap = true -- Wrap text
-vim.opt.breakindent = true -- Match indent on line break
-vim.opt.linebreak = true -- Line break on whole words
+local keymap = vim.keymap
+local opt = vim.opt
+
+opt.wrap = true -- Wrap text
+opt.breakindent = true -- Match indent on line break
+opt.linebreak = true -- Line break on whole words
 
 -- Allow j/k when navigating wrapped lines
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
+keymap.set("n", "j", "gj")
+keymap.set("n", "k", "gk")
 
 -- Spell check
-vim.opt.spelllang = 'en_us'
-vim.opt.spell = true
+opt.spelllang = 'en_us'
+opt.spell = true
