@@ -109,6 +109,7 @@ export LANG=en_US.UTF-8
 alias c='clear'
 alias spring-start='mvn spring-boot:run'
 alias spring-debug='mvn spring-boot:run -Dspring-boot.run.arguments=--debug'
+alias tmuxa='tmux attach'
 
 
 
