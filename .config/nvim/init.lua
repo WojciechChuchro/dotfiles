@@ -15,6 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 -- This has to be set before initializing lazy
 vim.g.mapleader = " "
 
+-- test rest 
+vim.g.vrc_set_default_mapping = 0
+vim.g.vrc_output_buffer_name = '_OUTPUT.json'
+vim.g.vrc_auto_format_response_patterns = {json= 'jq'}
+vim.g.vrc_response_default_content_type = 'application/json'
+
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup({
   {import = "plugins"},

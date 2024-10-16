@@ -9,13 +9,12 @@ Each plugin is briefly described to help you understand its purpose and function
 - **lazy.nvim**: A plugin loader that helps to optimize Neovim startup time by loading plugins only when necessary.
 ### Appearance
 
-- **alpha-nvim**: A fast and customizable greeter for Neovim, which allows you to set a personalized startup screen.
 - **dressing.nvim**: Provides improved UI components for Neovim, such as better input and select dialogs, enhancing the overall user interface experience.
 - **git-blame.nvim**: Displays git blame information at the end of the current line, making it easy to see who made changes and when.
 - **indent-blankline.nvim**: Adds indentation guides to all lines (including empty ones), making code structure clearer and more readable.
 - **kanagawa.nvim**: A Neovim colorscheme inspired by Japanese art, providing a visually pleasing coding environment.
-
 - **lualine.nvim**: A fast and easy-to-configure statusline plugin for Neovim, offering a variety of customizable components.
+- **cmp**: Extension that provides autocomplete
 ### LSP
 - **fidget.nvim**: A plugin that shows LSP progress in a minimal, unobtrusive way, helping you keep track of background processes.
 - **cmp-nvim-lsp**: Completion source for nvim-cmp that provides LSP completion, enhancing your coding efficiency with language server protocol support.
