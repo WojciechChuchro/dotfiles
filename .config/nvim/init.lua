@@ -24,10 +24,6 @@ vim.g.vrc_response_default_content_type = 'application/json'
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup({
   {import = "plugins"},
-  {import="plugins.appearance"},
-  {import="plugins.lsp"},
-  {import="plugins.navigation"},
-  {import="plugins.utils"}
 }, {
    change_detection = {
     enabled = true, -- automatically check for config file changes and reload the ui
