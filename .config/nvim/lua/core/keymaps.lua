@@ -10,6 +10,7 @@ keymap.set("n", "<leader>ww", ":w<CR>", {desc = "Save file"}) -- save
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>", {desc = "Open URL under cursor"}) -- open URL under cursor
 -- Clear search highlights mapping
 keymap.set("n", "<leader>nn", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss noice messages" })
 
 
 -- Vim REST Console 
