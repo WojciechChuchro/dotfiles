@@ -10,4 +10,11 @@
 
 # Keep ignored inside .config
 .config/yarn
+.config/gtk-2.0
+.config/StardewValley
+.config/SmartSetMasterErgo (Mac)
+.config/karabiner
+.config/wireshark
+.config/yarn
+.config/jgit
 **.DS_STORE
