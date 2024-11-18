@@ -10,7 +10,7 @@ opt.number = true
 opt.termguicolors = true
 
 -- Tabs & Indentation
-opt.tabstop = 4
+opt.tabstop = 2
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
