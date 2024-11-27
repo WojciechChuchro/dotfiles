@@ -1,0 +1,35 @@
+# yazi.toml - Configuration for Yazi terminal file manager
+
+# General settings
+[general]
+theme = "default"           # Set the theme
+layout = "dual-pane"        # Use a dual-pane layout for better navigation
+sort_order = "name"         # Sort files by name
+show_hidden = true          # Show hidden files
+confirm_on_delete = true    # Confirm before deleting files
+
+# Keybindings
+[keybindings]
+quit = "q"                  # Keybinding to quit the application
+toggle_hidden = "."         # Keybinding to toggle hidden files
+refresh = "r"               # Keybinding to refresh the file list
+
+# File associations
+[openers]
+
+# Preview configuration
+[preview]
+enable = true               # Enable file previews
+max_lines = 50              # Limit preview to 50 lines
+wrap_lines = true           # Wrap long lines in previews
+
+# Performance optimizations
+[performance]
+cache_preview = true        # Cache previews for faster loading
+max_threads = 4             # Use up to 4 threads for operations
+
+# Logging
+[logging]
+enable = true               # Enable logging
+log_file = "~/.config/yazi/yazi.log" # Log file path
+log_level = "info"          # Log level (debug, info, warn, error)
