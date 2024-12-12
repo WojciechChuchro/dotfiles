@@ -1,6 +1,15 @@
 [
   {
+    "context": "Pane",
     "bindings": {
+      "alt-p": "pane::ActivatePrevItem",
+      "alt-n": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-r": ["task::Spawn", {"task_name": "Run curent java class"}]
     }
   },
   {
@@ -9,9 +18,9 @@
     }
   },
   {
-      "context": "Editor && vim_mode == insert && !menu",
-      "bindings": {
-        "j k": "vim::NormalBefore"
-      }
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j k": "vim::NormalBefore"
     }
+  }
 ]
