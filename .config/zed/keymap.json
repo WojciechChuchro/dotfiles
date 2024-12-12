@@ -1,0 +1,17 @@
+[
+  {
+    "bindings": {
+    }
+  },
+  {
+    "context": "Editor && showing_completion",
+    "bindings": {
+    }
+  },
+  {
+      "context": "Editor && vim_mode == insert && !menu",
+      "bindings": {
+        "j k": "vim::NormalBefore"
+      }
+    }
+]
