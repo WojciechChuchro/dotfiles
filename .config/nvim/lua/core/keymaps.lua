@@ -113,31 +113,6 @@ keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc 
 keymap.set("n", "<leader>tr", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { desc = "LSP document symbol" })
 keymap.set("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>", { desc = "LSP completion" })
 
--- jdtls keymaps
-keymap.set("n", "<leader>oi", function()
-	if vim.bo.filetype == "java" then
-		require("jdtls").organize_imports()
-	end
-end, { desc = "Organize imports" })
-
-keymap.set("n", "<leader>gu", function()
-	if vim.bo.filetype == "java" then
-		require("jdtls").update_projects_config()
-	end
-end, { desc = "Update projects config" })
-
-keymap.set("n", "<leader>tc", function()
-	if vim.bo.filetype == "java" then
-		require("jdtls").test_class()
-	end
-end, { desc = "Test class" })
-
-keymap.set("n", "<leader>tm", function()
-	if vim.bo.filetype == "java" then
-		require("jdtls").test_nearest_method()
-	end
-end, { desc = "Test method" })
-
 -- todo-comments
 vim.keymap.set("n", "]t", function()
 	require("todo-comments").jump_next()
