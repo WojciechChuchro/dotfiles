@@ -1,5 +1,6 @@
-
+-- https://github.com/stevearc/dressing.nvim
 return {
-  "stevearc/dressing.nvim",
-  event = "VeryLazy",
+	"stevearc/dressing.nvim",
+	event = "VeryLazy",
+	opts = {},
 }

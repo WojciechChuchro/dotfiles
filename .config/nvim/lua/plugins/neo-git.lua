@@ -1,3 +1,4 @@
+-- https://github.com/NeogitOrg/neogit
 return {
 	"NeogitOrg/neogit",
 	dependencies = {
@@ -10,4 +11,3 @@ return {
 	},
 	config = true,
 }
-

@@ -1,4 +1,0 @@
-return {
-  'ThePrimeagen/htmx-lsp',
-}
-

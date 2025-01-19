@@ -1,4 +1,4 @@
-
+-- https://github.com/mfussenegger/nvim-lint
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufNewFile" },
@@ -22,6 +22,5 @@ return {
 				lint.try_lint()
 			end,
 		})
-
 	end,
 }
