@@ -33,3 +33,12 @@ max_threads = 4             # Use up to 4 threads for operations
 enable = true               # Enable logging
 log_file = "~/.config/yazi/yazi.log" # Log file path
 log_level = "info"          # Log level (debug, info, warn, error)
+keymap = [
+ { on = "<Enter>", run = "open", desc = "Open selected files" },
+]
+
+[opener]
+edit = [
+    { run = 'nvim "$@"', desc = "nvim", block = true, for = "unix" },
+    { run = 'nvim "$@"', desc = "nvim (macOS)", block = true, for = "macos" },
+]
