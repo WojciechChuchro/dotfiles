@@ -29,6 +29,7 @@ return {
 			ensure_installed = {
 				"bashls",
 				"cssls",
+				"pyright",
 				"html",
 				"gradle_ls",
 				"groovyls",
@@ -47,7 +48,6 @@ return {
 		})
 
 		require("mason-tool-installer").setup({
-			-- Install these linters, formatters, debuggers automatically
 			ensure_installed = {
 				"java-debug-adapter",
 				"java-test",
@@ -72,9 +72,22 @@ return {
 					capabilities = lsp_capabilities,
 				})
 			end,
-		})
 
-		-- Lua LSP settings
+			-- python
+			["pyright"] = function()
+				lspconfig.pyright.setup({
+					on_attach = lsp_attach,
+					capabilities = lsp_capabilities,
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = "strict", -- Example setting
+							},
+						},
+					},
+				})
+			end,
+		})
 		lspconfig.lua_ls.setup({
 			settings = {
 				Lua = {
