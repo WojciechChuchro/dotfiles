@@ -85,7 +85,7 @@ map <leader>c <action>(CommentByLineComment)
 
 " Open NERDTree (use q to exit)
 let g:WhichKeyDesc_leader = "<leader>x Open file explorer"
-map <leader>x :NERDTreeToggle<CR>
+map <leader>x :NERDTree<CR>
 
 " Folding
 let g:WhichKeyDesc_fold = "<leader>z Folding"
