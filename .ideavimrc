@@ -84,8 +84,16 @@ let g:WhichKeyDesc_comment = "<leader>c Comment line"
 map <leader>c <action>(CommentByLineComment)
 
 " Open NERDTree (use q to exit)
-let g:WhichKeyDesc_leader = "<leader>x Open file explorer"
-map <leader>x :NERDTree<CR>
+let g:WhichKeyDesc_nerdtree_toggle = "<leader>nt Toggle NERDTree"
+map <leader>nt :NERDTreeToggle<CR>
+let g:WhichKeyDesc_nerdtree_focus = "<leader>nf Focus NERDTree"
+map <leader>nf :NERDTreeFocus<CR>
+let g:WhichKeyDesc_nerdtree_close = "<leader>nc Close NERDTree"
+map <leader>nc :NERDTreeClose<CR>
+let g:WhichKeyDesc_nerdtree_find = "<leader>nq Find current file"
+map <leader>nq :NERDTreeFind<CR>
+let g:WhichKeyDesc_nerdtree_refresh = "<leader>nr Refresh NERDTree"
+map <leader>nr :NERDTreeRefreshRoot<CR>
 
 " Folding
 let g:WhichKeyDesc_fold = "<leader>z Folding"
