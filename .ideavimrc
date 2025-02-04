@@ -24,7 +24,7 @@ set visualbell
 "Use system clipboard
 set clipboard+=unnamed
 "No use timeout for mapped key sequences
-"set notimeout
+set notimeout
 let mapleader = " "
 
 "" Plugin Settings
@@ -76,14 +76,15 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 "" ========================================================
 
 " Disable highlight after search
-let g:WhichKeyDesc_delete_highlight_after_search = "<leader>n Delete highlight after vim search"
-nnoremap <Leader>n :noh<CR>
+let g:WhichKeyDesc_delete_highlight_after_search = "<leader>u Delete highlight after vim search"
+nnoremap <Leader>u :noh<CR>
 
 " Comment lines
 let g:WhichKeyDesc_comment = "<leader>c Comment line"
 map <leader>c <action>(CommentByLineComment)
 
 " Open NERDTree (use q to exit)
+let g:WhichKeyDesc_nerdtree = "<leader>n NERDTree"
 let g:WhichKeyDesc_nerdtree_toggle = "<leader>nt Toggle NERDTree"
 map <leader>nt :NERDTreeToggle<CR>
 let g:WhichKeyDesc_nerdtree_focus = "<leader>nf Focus NERDTree"
@@ -140,6 +141,7 @@ let g:WhichKeyDesc_file_quickLook = "<leader><leader> Recent files"
 let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>fl Show recent locations"
 let g:WhichKeyDesc_file_nav_scratch_file = "<leader>fs Create new scratch file"
 let g:WhichKeyDesc_file_find_usages = "<leader>fu Find usages"
+let g:WhichKeyDesc_file_find_usages = "<leader>fg Find in path"
 map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
 nmap <leader>fu <Action>(FindUsages)
