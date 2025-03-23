@@ -9,7 +9,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "alt-r": ["task::Spawn", {"task_name": "Run curent java class"}]
+      "alt-r j": ["task::Spawn", {"task_name": "Run curent java class2"}],
+      "alt-r c": ["task::Spawn", {"task_name": "Run curent c file"}]
     }
   },
   {

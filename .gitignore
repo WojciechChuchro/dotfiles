@@ -16,5 +16,6 @@
 .config/karabiner
 .config/wireshark
 .config/yarn
+.config/zed
 .config/jgit
 **.DS_STORE

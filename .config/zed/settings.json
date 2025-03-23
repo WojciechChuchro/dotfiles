@@ -27,14 +27,17 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Catppuccin Mocha"
   },
   
-    "lsp": {
-      "java": {
-        "settings": {},
-        "initialization_options": {}
-      }
-    }
-  
+  "lsp": {
+    
+    "jdtls": {
+      "settings": {
+        "version": "1.40.0", // jdtls version to download and use
+        "classpath": "/path/to/classes.jar:/path/to/more/classes/"
+      },
+      "initialization_options": {}
+    },
+  }
 }
