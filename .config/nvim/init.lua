@@ -387,7 +387,6 @@ require('lazy').setup({
     end,
   },
 
-  -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime, and plugins
     -- used for completion, annotations, and signatures of Neovim apis
@@ -509,6 +508,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Format Lua code
+        'typescript-language-server',
+        'ast_grep',
         'goimports',
         'sqls',
       })
@@ -567,7 +568,7 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettier' },
       },
     },
   },
