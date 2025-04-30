@@ -12,6 +12,16 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    {
+      '<leader>z',
+      function()
+        if vim.bo.filetype ~= 'neo-tree' then
+          vim.cmd 'Neotree close' -- Close Neo-tree if you're not focused on the Neo-tree window
+        end
+      end,
+      desc = 'Close NeoTree if focused on a file',
+      silent = true,
+    },
   },
   opts = {
     filesystem = {

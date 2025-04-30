@@ -329,6 +329,12 @@ require('lazy').setup({
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
+        pickers = {
+          find_files = {
+            hidden = true, -- Include hidden files like .env, .gitignore
+            file_ignore_patterns = { '.git/' }, -- (Optional) ignore .git directory
+          },
+        },
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
