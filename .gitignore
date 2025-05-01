@@ -18,4 +18,6 @@
 .config/yarn
 .config/zed
 .config/jgit
+.config/fish
+.config/github-copilot
 **.DS_STORE
