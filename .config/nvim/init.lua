@@ -6,8 +6,7 @@
       - <escape key>
       - :
       - Tutor
-      - <enter key>
---]]
+      - <enter key> --]]
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -406,6 +405,9 @@ require('lazy').setup({
     },
   },
   {
+    'mfussenegger/nvim-jdtls', -- Enhanced Java LSP support
+  },
+  {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -508,6 +510,72 @@ require('lazy').setup({
             },
           },
         },
+        jdtls = {
+          -- Java-specific settings
+          settings = {
+            java = {
+              signatureHelp = { enabled = true },
+              contentProvider = { preferred = 'fernflower' },
+              completion = {
+                favoriteStaticMembers = {
+                  'org.hamcrest.MatcherAssert.assertThat',
+                  'org.hamcrest.Matchers.*',
+                  'org.junit.Assert.*',
+                  'java.util.Objects.requireNonNull',
+                  'java.util.Objects.requireNonNullElse',
+                },
+                filteredTypes = {
+                  'com.sun.*',
+                  'io.micrometer.shaded.*',
+                  'java.awt.*',
+                  'jdk.*',
+                  'sun.*',
+                },
+              },
+              sources = {
+                organizeImports = {
+                  starThreshold = 9999,
+                  staticStarThreshold = 9999,
+                },
+              },
+              codeGeneration = {
+                toString = {
+                  template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+                },
+                hashCodeEquals = {
+                  useJava7Objects = true,
+                },
+              },
+              configuration = {
+                updateBuildConfiguration = 'interactive',
+                runtimes = {
+                  -- Add your Java installations here if needed
+                  -- {name = "JavaSE-17", path = "/path/to/jdk-17"},
+                },
+              },
+              maven = {
+                downloadSources = true,
+              },
+              implementationsCodeLens = {
+                enabled = true,
+              },
+              referencesCodeLens = {
+                enabled = true,
+              },
+              references = {
+                includeDecompiledSources = true,
+              },
+              inlayHints = {
+                parameterNames = {
+                  enabled = 'all', -- literals, all, none
+                },
+              },
+              format = {
+                enabled = true,
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers are installed
@@ -518,6 +586,9 @@ require('lazy').setup({
         'ast_grep',
         'goimports',
         'sqls',
+        'jdtls',
+        'java-debug-adapter',
+        'java-test',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -570,11 +641,15 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'goimports' },
         sql = { 'pg_format' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
+        python = { 'isort', 'black' },
         javascript = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescript = { 'prettier' },
+        json = { 'prettier' },
+        html = { 'prettier' },
+        css = { 'prettier' },
+        yaml = { 'prettier' },
       },
     },
   },
