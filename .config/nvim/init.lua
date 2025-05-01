@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
-require 'core.bootstrap'
+require 'core.lazy'
 require 'core.options'
 require 'core.colors'
 --r [[ Basic Keymaps ]]
