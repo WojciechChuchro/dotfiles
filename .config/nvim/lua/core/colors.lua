@@ -1,6 +1,6 @@
--- Define your preferred colorscheme
-local colorscheme = 'cyberdream'
+--local colorscheme = 'cyberdream'
 -- local colorscheme = "tokyonight-storm"
+local colorscheme = 'catppuccin'
 
 local function set_colorscheme()
   local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)

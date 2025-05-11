@@ -38,6 +38,9 @@ vim.opt.splitbelow = true
 -- Width of a tab character
 vim.bo.tabstop = 4
 
+-- Always use spaces instead of tabs
+vim.opt.expandtab = true
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
