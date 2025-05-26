@@ -133,22 +133,23 @@ map <leader>as <action>(SearchEverywhere)
 nmap gh <Action>(ShowHoverInfo)
 
 " File navigation
-let g:WhichKeyDesc_file_nav = "<leader>f File navigation"
-let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Go to file"
-let g:WhichKeyDesc_file_nav_goto_content = "<leader>fc Search for file content"
-let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>fr Show recent files"
+let g:WhichKeyDesc_file_nav = "<leader>s [S]earch"
+let g:WhichKeyDesc_file_nav_goto_file = "<leader>sf [S]earch [F]ile"
+let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>sr [S]earch [R]ecent files"
 let g:WhichKeyDesc_file_quickLook = "<leader><leader> Recent files"
-let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>fl Show recent locations"
-let g:WhichKeyDesc_file_nav_scratch_file = "<leader>fs Create new scratch file"
-let g:WhichKeyDesc_file_find_usages = "<leader>fu Find usages"
-let g:WhichKeyDesc_file_find_usages = "<leader>fg Find in path"
-map <leader>ff <action>(GotoFile)
-map <leader>fr <action>(RecentFiles)
-nmap <leader>fu <Action>(FindUsages)
-map <leader>fg <action>(FindInPath)
+let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>sl [S]earch recent [L]ocations"
+let g:WhichKeyDesc_file_find_usages = "<leader>su [S]earch [U]sages"
+let g:WhichKeyDesc_file_search_in_file_path = "<leader>sp [S]earch in [P]ath"
+map <leader>sf <action>(GotoFile)
+map <leader>sr <action>(RecentFiles)
 map <leader><leader> <Action>(RecentFiles)
-map <leader>fl <action>(RecentLocations)
-map <leader>fs <action>(NewScratchFile)
+nmap <leader>su <Action>(FindUsages)
+map <leader>sl <action>(RecentLocations)
+map <leader>sp <action>(FindInPath)
+
+" ??????
+let g:WhichKeyDesc_file_nav_scratch_file = "<leader>ss Create new scratch file"
+map <leader>ss <action>(NewScratchFile)
 
 " Close active tab
 let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
