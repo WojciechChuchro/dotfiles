@@ -41,6 +41,13 @@ return {
       html = { 'prettier' },
       css = { 'prettier' },
       yaml = { 'prettier' },
+      java = { 'google-java-format' },
+    },
+    formatters = {
+      ['google-java-format'] = {
+        command = 'google-java-format',
+        args = { '--aosp', '-' }, -- Use AOSP style for 4-space indentation
+      },
     },
   },
 }
