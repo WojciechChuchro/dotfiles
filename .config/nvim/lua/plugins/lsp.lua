@@ -100,73 +100,6 @@ return {
           },
         },
       },
-      jdtls = {
-        -- Java-specific settings
-        settings = {
-          java = {
-            signatureHelp = { enabled = true },
-            contentProvider = { preferred = 'fernflower' },
-            completion = {
-              favoriteStaticMembers = {
-                'org.hamcrest.MatcherAssert.assertThat',
-                'org.hamcrest.Matchers.*',
-                'org.junit.Assert.*',
-                'java.util.Objects.requireNonNull',
-                'java.util.Objects.requireNonNullElse',
-              },
-              filteredTypes = {
-                'com.sun.*',
-                'io.micrometer.shaded.*',
-                'java.awt.*',
-                'jdk.*',
-                'sun.*',
-              },
-            },
-            sources = {
-              organizeImports = {
-                starThreshold = 9999,
-                staticStarThreshold = 9999,
-              },
-            },
-            codeGeneration = {
-              toString = {
-                template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
-              },
-              hashCodeEquals = {
-                useJava7Objects = true,
-              },
-            },
-            configuration = {
-              updateBuildConfiguration = 'interactive',
-
-              runtimes = {
-                -- Add your Java installations here if needed
-                -- {name = "JavaSE-17", path = "/path/to/jdk-17"},
-              },
-            },
-            maven = {
-              downloadSources = true,
-            },
-            implementationsCodeLens = {
-              enabled = true,
-            },
-            referencesCodeLens = {
-              enabled = true,
-            },
-            references = {
-              includeDecompiledSources = true,
-            },
-            inlayHints = {
-              parameterNames = {
-                enabled = 'all', -- literals, all, none
-              },
-            },
-            format = {
-              enabled = true,
-            },
-          },
-        },
-      },
     }
 
     -- Ensure the servers are installed
@@ -190,6 +123,9 @@ return {
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
+          if server_name == 'jdtls' then
+            return -- Do NOT setup jdtls here, it's handled manually in ftplugin/java.lua
+          end
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,

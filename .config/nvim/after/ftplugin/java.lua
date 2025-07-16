@@ -12,7 +12,7 @@ local mason_registry = require 'mason-registry'
 local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
 
 -- Find root directory (usually the maven or gradle project root)
-local root_markers = { 'mvnw', 'gradlew', 'pom.xml', 'build.gradle', '.git' }
+local root_markers = { 'mvnw', 'gradlew', 'pom.xml', 'build.gradle', '.git', 'build.gradle.kts' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
 if not root_dir then
   root_dir = vim.fn.getcwd()
@@ -38,7 +38,7 @@ else
 end
 
 -- Explicitly use Java 21 installation
-local java_cmd = '/Library/Java/JavaVirtualMachines/jdk-21.0.4.jdk/Contents/Home/bin/java'
+local java_cmd = '/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/java'
 -- Fallback to java in PATH if the specific path doesn't exist
 if vim.fn.executable(java_cmd) ~= 1 then
   print 'Specified Java path not found, falling back to system Java'
@@ -116,9 +116,9 @@ local config = {
         updateBuildConfiguration = 'interactive',
         runtimes = {
           -- Specify Java 21 runtime
-          { name = 'JavaSE-21', path = '/Library/Java/JavaVirtualMachines/jdk-21.0.4.jdk/Contents/Home' },
+          { name = 'JavaSE-21', path = '/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home' },
           -- Add fallbacks for project requirements
-          { name = 'JavaSE-17', path = '/Library/Java/JavaVirtualMachines/jdk-21.0.4.jdk/Contents/Home' }, -- For backwards compatibility
+          { name = 'JavaSE-17', path = '/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home' }, -- For backwards compatibility
         },
       },
       maven = {
