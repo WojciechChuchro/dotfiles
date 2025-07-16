@@ -34,3 +34,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set('n', '<leader>th', ':Hardtime toggle<CR>', { noremap = true, silent = true, desc = 'Toggle Hardtime' })
 vim.keymap.set('n', '<leader>tp', ':Precognition toggle<CR>', { noremap = true, silent = true, desc = 'Toggle Precognition' })
+
+vim.keymap.set('n', '<leader>nd', ':NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
