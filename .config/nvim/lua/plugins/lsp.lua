@@ -115,8 +115,6 @@ return {
       'java-test',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-    -- Setup mason-lspconfig
     require('mason-lspconfig').setup {
       ensure_installed = {},
       automatic_installation = false,
