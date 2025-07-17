@@ -52,12 +52,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+inner.horizontal = 0
+inner.vertical =  0
+outer.left =       5
+outer.bottom =     30
+outer.top =        0
+outer.right =      0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -109,8 +109,8 @@ alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
+alt-t = 'workspace T'
+alt-r = 'workspace R'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-q = 'workspace Q'
@@ -122,8 +122,8 @@ cmd-alt-2= 'move-node-to-workspace 2'
 cmd-alt-3= 'move-node-to-workspace 3'
 cmd-alt-4= 'move-node-to-workspace 4'
 cmd-alt-5= 'move-node-to-workspace 5'
-cmd-alt-6= 'move-node-to-workspace 6'
-cmd-alt-7= 'move-node-to-workspace 7'
+cmd-alt-t= 'move-node-to-workspace T'
+cmd-alt-r= 'move-node-to-workspace R'
 cmd-alt-8= 'move-node-to-workspace 8'
 cmd-alt-9= 'move-node-to-workspace 9'
 cmd-alt-q= 'move-node-to-workspace Q'
