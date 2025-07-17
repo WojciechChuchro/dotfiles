@@ -10,7 +10,12 @@ local jdtls = require 'jdtls'
 local home = os.getenv 'HOME'
 local mason_registry = require 'mason-registry'
 local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
+local bundles = {
+  vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
+}
 
+-- Needed for running/debugging unit tests
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-test/*.jar', 1), '\n'))
 -- Find root directory (usually the maven or gradle project root)
 local root_markers = { 'mvnw', 'gradlew', 'pom.xml', 'build.gradle', '.git', 'build.gradle.kts' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
@@ -151,7 +156,11 @@ local config = {
     bundles = bundles,
   },
 }
-
+-- Needed for debugging
+config['on_attach'] = function(client, bufnr)
+  jdtls.setup_dap { hotcodereplace = 'auto' }
+  require('jdtls.dap').setup_dap_main_class_configs()
+end
 -- Start the JDTLS server
 jdtls.start_or_attach(config)
 
