@@ -119,8 +119,8 @@ source <(ng completion script)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export JAVA_HOME=/Users/wojciech/Library/Java/JavaVirtualMachines/openjdk-21/Contents/Home
-
+export JAVA_HOME=/Users/wojciech/Library/Java/JavaVirtualMachines/openjdk-21/Contents/Home/
+#export JAVA_HOME=/Users/wojciech/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export PATH=$PATH:$HOME/.local/opt/go/bin
@@ -147,4 +147,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
+eval "$(~/.local/bin/mise activate)"
+eval "$(rbenv init -)"
