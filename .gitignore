@@ -20,4 +20,5 @@
 .config/jgit
 .config/fish
 .config/github-copilot
+.config/mise
 **.DS_STORE
