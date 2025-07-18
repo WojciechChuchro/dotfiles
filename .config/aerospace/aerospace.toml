@@ -54,8 +54,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [gaps]
 inner.horizontal = 0
 inner.vertical =  0
-outer.left =       5
-outer.bottom =     30
+outer.left =       0
+outer.bottom =     0
 outer.top =        0
 outer.right =      0
 
