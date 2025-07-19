@@ -2,6 +2,10 @@
 -- See `:help vim.opt`
 --  NOTE: For more options, you can see `:help option-list`
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = true
+
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -36,7 +40,9 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Width of a tab character
-vim.bo.tabstop = 4
+vim.bo.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
 -- Always use spaces instead of tabs
 vim.opt.expandtab = true
