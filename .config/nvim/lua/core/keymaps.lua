@@ -3,7 +3,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 -- <leader>q opens the location list with current diagnostics
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = '[Q]uickfix list' })
 
 -- Terminal mode escape
 -- Pressing <Esc><Esc> in terminal mode exits to normal mode
@@ -40,14 +40,13 @@ vim.keymap.set('n', '<leader>tc', function()
   if vim.bo.filetype == 'java' then
     require('jdtls').test_class()
   end
-end)
+end, { desc = 'Test class' })
 
 vim.keymap.set('n', '<leader>tm', function()
   if vim.bo.filetype == 'java' then
     require('jdtls').test_nearest_method()
   end
-end)
-vim.keymap.set('n', '<leader>nd', ':NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
+end, { desc = 'Test nearest method' })
 
 -- debugging
 vim.keymap.set('n', '<leader>bb', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = ' Toggle Breakpoint' })
@@ -78,6 +77,3 @@ vim.keymap.set('n', '<leader>d?', function()
 end, { desc = 'Centered Float' })
 vim.keymap.set('n', '<leader>df', '<cmd>Telescope dap frames<cr>', { desc = 'Dap Frames' })
 vim.keymap.set('n', '<leader>dh', '<cmd>Telescope dap commands<cr>', { desc = 'Dap Help' })
-vim.keymap.set('n', '<leader>de', function()
-  require('telescope.builtin').diagnostics { default_text = ':E:' }
-end)
