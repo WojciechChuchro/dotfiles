@@ -3,11 +3,16 @@
 
 vim.bo.tabstop = 4
 vim.opt.shiftwidth = 4
+
 local home = os.getenv 'HOME'
 local workspace_path = home .. '/.local/share/nvim/jdtls-workspace/'
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = workspace_path .. project_name
+local bundles = {
+  vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
+}
 
+vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/nvim/mason/share/java-test/*.jar', 1), '\n'))
 local status, jdtls = pcall(require, 'jdtls')
 if not status then
   return
@@ -63,7 +68,7 @@ local config = {
   },
 
   init_options = {
-    bundles = {},
+    bundles = bundles,
   },
 }
 require('jdtls').start_or_attach(config)

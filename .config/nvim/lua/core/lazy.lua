@@ -1,4 +1,4 @@
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+-- https://github.com/folke/lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -11,6 +11,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { import = 'plugins' },
+  { import = 'plugins/custom' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

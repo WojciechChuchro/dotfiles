@@ -1,6 +1,9 @@
 return {
+  -- https://github.com/windwp/nvim-ts-autotag
   'windwp/nvim-ts-autotag',
-  event = 'InsertEnter', -- Load on insert
+  event = 'InsertEnter',
+
+  -- https://github.com/nvim-treesitter/nvim-treesitter
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
     require('nvim-ts-autotag').setup {

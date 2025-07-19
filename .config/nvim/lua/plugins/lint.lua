@@ -1,3 +1,4 @@
+-- https://github.com/mfussenegger/nvim-lint
 return {
 
   { -- Linting

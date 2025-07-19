@@ -1,10 +1,13 @@
-return { -- Fuzzy Finder (files, lsp, etc)
+return {
+  -- https://github.com/nvim-telescope/telescope.nvim
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
   branch = '0.1.x',
   dependencies = {
+    -- https://github.com/nvim-lua/plenary.nvim
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
+      -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
       'nvim-telescope/telescope-fzf-native.nvim',
 
       -- `build` is used to run some command when the plugin is installed/updated.
