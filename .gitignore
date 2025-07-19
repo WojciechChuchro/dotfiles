@@ -21,4 +21,5 @@
 .config/fish
 .config/github-copilot
 .config/mise
+.config/joplin-desktop
 **.DS_STORE
