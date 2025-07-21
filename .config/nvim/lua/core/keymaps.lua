@@ -133,3 +133,7 @@ end, { desc = 'git [D]iff against last commit' })
 
 vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
 vim.keymap.set('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
+-- run lua
+vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>', { desc = 'E[x]ecute whole file' })
+vim.keymap.set('n', '<space>x', ':.lua<CR>', { desc = 'E[x]ecute one line' })
+vim.keymap.set('v', '<space>x', ':lua<CR>', { desc = 'E[x]ecute selected lines' })
