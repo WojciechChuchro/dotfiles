@@ -105,6 +105,7 @@ return {
 
     -- Configure LSP servers
     local servers = {
+      kotlin_language_server = {},
       gopls = {},
       lua_ls = {
         settings = {
@@ -120,7 +121,7 @@ return {
     -- Ensure the servers are installed
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Format Lua code
+      'stylua',
       'typescript-language-server',
       'ast_grep',
       'goimports',
