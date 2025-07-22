@@ -17,6 +17,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>h', group = 'Git [H]unk' },
       { '<leader>b', group = '[B]Breakpoints' },
       { '<leader>d', group = '[D]ebugger' },
+      { '<leader>x', group = 'E[x]ecute' },
     },
   },
 }

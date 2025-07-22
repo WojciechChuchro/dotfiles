@@ -1,11 +1,16 @@
 return {
+  -- https://github.com/neovim/nvim-lspconfig
   'neovim/nvim-lspconfig',
   dependencies = {
-    -- Automatically install LSPs and related tools to stdpath for Neovim
+    -- https://github.com/mason-org/mason.nvim
     { 'williamboman/mason.nvim', opts = {} },
+    -- https://github.com/mason-org/mason-lspconfig.nvim
     'williamboman/mason-lspconfig.nvim',
+    -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'j-hui/fidget.nvim', opts = {} }, -- Useful status updates for LSP.
+    -- https://github.com/j-hui/fidget.nvim
+    { 'j-hui/fidget.nvim', opts = {} },
+    -- https://github.com/hrsh7th/cmp-nvim-lsp
     'hrsh7th/cmp-nvim-lsp', -- Allows extra capabilities provided by nvim-cmp
   },
   config = function()
