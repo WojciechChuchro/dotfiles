@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   -- https://github.com/nvim-telescope/telescope.nvim
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',

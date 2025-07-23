@@ -101,6 +101,9 @@ return {
       vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DiagnosticSignError' })
       vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DiagnosticSignInfo' })
 
+      -- vim.keymap.set('n', '<leader>df', '<cmd>Telescope dap frames<cr>', { desc = 'Dap Frames' })
+      -- vim.keymap.set('n', '<leader>dh', '<cmd>Telescope dap commands<cr>', { desc = 'Dap Help' })
+      -- vim.keymap.set('n', '<leader>ba', '<cmd>Telescope dap list_breakpoints<cr>', { desc = ' Breakpoint List' })
       -- Auto open/close dapui
       dap.listeners.after.event_initialized['dapui_config'] = function()
         require('dapui').open()

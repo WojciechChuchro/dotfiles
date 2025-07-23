@@ -32,28 +32,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.keymap.set('n', '<leader>th', ':Hardtime toggle<CR>', { noremap = true, silent = true, desc = 'Toggle Hardtime' })
-vim.keymap.set('n', '<leader>tp', ':Precognition toggle<CR>', { noremap = true, silent = true, desc = 'Toggle Precognition' })
-
--- test
-vim.keymap.set('n', '<leader>tc', function()
-  if vim.bo.filetype == 'java' then
-    require('jdtls').test_class()
-  end
-end, { desc = 'Test class' })
-
-vim.keymap.set('n', '<leader>tm', function()
-  if vim.bo.filetype == 'java' then
-    require('jdtls').test_nearest_method()
-  end
-end, { desc = 'Test nearest method' })
-
 -- debugging
 vim.keymap.set('n', '<leader>bb', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = ' Toggle Breakpoint' })
 vim.keymap.set('n', '<leader>bc', "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Condition: '))<cr>", { desc = ' Conditional Breakpoint' })
 vim.keymap.set('n', '<leader>bl', "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log: '))<cr>", { desc = '󰎠 Log Breakpoint' })
 vim.keymap.set('n', '<leader>br', "<cmd>lua require'dap'.clear_breakpoints()<cr>", { desc = '󰆴 Clear Breakpoints' })
-vim.keymap.set('n', '<leader>ba', '<cmd>Telescope dap list_breakpoints<cr>', { desc = ' Breakpoint List' })
 vim.keymap.set('n', '<leader>dc', "<cmd>lua require'dap'.continue()<cr>", { desc = ' Continue' })
 vim.keymap.set('n', '<leader>dj', "<cmd>lua require'dap'.step_over()<cr>", { desc = ' Step Over' })
 vim.keymap.set('n', '<leader>dk', "<cmd>lua require'dap'.step_into()<cr>", { desc = ' Step Into' })
@@ -75,8 +58,6 @@ vim.keymap.set('n', '<leader>d?', function()
   local widgets = require 'dap.ui.widgets'
   widgets.centered_float(widgets.scopes)
 end, { desc = 'Centered Float' })
-vim.keymap.set('n', '<leader>df', '<cmd>Telescope dap frames<cr>', { desc = 'Dap Frames' })
-vim.keymap.set('n', '<leader>dh', '<cmd>Telescope dap commands<cr>', { desc = 'Dap Help' })
 
 -- Harpoon
 vim.keymap.set('n', '<leader>ha', require('harpoon.mark').add_file)

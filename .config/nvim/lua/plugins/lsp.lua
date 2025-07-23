@@ -24,8 +24,8 @@ return {
         end
 
         -- Key mappings for LSP features
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         map('<leader>ti', function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end, '[T]oggle [I]nlay Hints')
@@ -35,13 +35,13 @@ return {
             virtual_text = not config.virtual_text,
           }
         end, '[T]oggle [V]irtual Text diagnostics')
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-        map('<leader>Ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-        map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        -- map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        -- map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+        -- map('<leader>Ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        --map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- Additional client and method support configurations
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -83,20 +83,19 @@ return {
           [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
       } or {},
-      -- Messge on the right side of
-      -- virtual_text = {
-      --   source = 'if_many',
-      --   spacing = 2,
-      --   format = function(diagnostic)
-      --     local diagnostic_message = {
-      --       [vim.diagnostic.severity.ERROR] = diagnostic.message,
-      --       [vim.diagnostic.severity.WARN] = diagnostic.message,
-      --       [vim.diagnostic.severity.INFO] = diagnostic.message,
-      --       [vim.diagnostic.severity.HINT] = diagnostic.message,
-      --     }
-      --     return diagnostic_message[diagnostic.severity]
-      --   end,
-      -- },
+      virtual_text = {
+        source = 'if_many',
+        spacing = 2,
+        format = function(diagnostic)
+          local diagnostic_message = {
+            [vim.diagnostic.severity.ERROR] = diagnostic.message,
+            [vim.diagnostic.severity.WARN] = diagnostic.message,
+            [vim.diagnostic.severity.INFO] = diagnostic.message,
+            [vim.diagnostic.severity.HINT] = diagnostic.message,
+          }
+          return diagnostic_message[diagnostic.severity]
+        end,
+      },
     }
 
     -- Create a client with additional capabilities from nvim-cmp
@@ -110,6 +109,7 @@ return {
       lua_ls = {
         settings = {
           Lua = {
+            diagnostics = { globals = { 'vim', 'Snacks' } },
             completion = {
               callSnippet = 'Replace',
             },
