@@ -1,7 +1,10 @@
 local set = vim.keymap.set
 
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Quickfix listInstant' })
+set('n', '<leader>q', function()
+  vim.diagnostic.setqflist()
+  vim.cmd('copen')
+end, { desc = 'Populate and open quickfix list with diagnostics' })
 
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
