@@ -1,6 +1,3 @@
--- ftplugin/java.lua
--- Enhanced JDTLS setup for Java files
-
 vim.bo.tabstop = 4
 vim.opt.shiftwidth = 4
 
@@ -74,8 +71,7 @@ local config = {
 require('jdtls').start_or_attach(config)
 
 vim.keymap.set('n', '<leader>co', "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = 'Organize Imports' })
-vim.keymap.set('n', '<leader>crv', "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = 'Extract Variable' })
-vim.keymap.set('v', '<leader>crv', "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", { desc = 'Extract Variable' })
-vim.keymap.set('n', '<leader>crc', "<Cmd>lua require('jdtls').extract_constant()<CR>", { desc = 'Extract Constant' })
-vim.keymap.set('v', '<leader>crc', "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", { desc = 'Extract Constant' })
-vim.keymap.set('v', '<leader>crm', "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { desc = 'Extract Method' })
+vim.keymap.set('v', '<leader>cv', "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", { desc = 'Extract Variable' })
+vim.keymap.set('n', '<leader>cr', "<Cmd>lua require('jdtls').extract_constant()<CR>", { desc = 'Extract Constant' })
+vim.keymap.set('v', '<leader>cc', "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", { desc = 'Extract Constant' })
+vim.keymap.set('v', '<leader>cm', "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { desc = 'Extract Method' })

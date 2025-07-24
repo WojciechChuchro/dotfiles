@@ -3,6 +3,11 @@ return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
+  config = function()
+    vim.keymap.set('n', '<leader>f', function()
+      require('conform').format { async = true, lsp_format = 'fallback' }
+    end, { desc = 'Format buffer' })
+  end,
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
