@@ -1,4 +1,4 @@
-return { -- Collection of various small independent plugins/modules
+return {
   -- https://github.com/echasnovski/mini.nvim
   'echasnovski/mini.nvim',
   config = function()

@@ -2,7 +2,6 @@ return {
   -- https://github.com/windwp/nvim-ts-autotag
   'windwp/nvim-ts-autotag',
   event = 'InsertEnter',
-
   -- https://github.com/nvim-treesitter/nvim-treesitter
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
