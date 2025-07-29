@@ -8,6 +8,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'goimports' },
+        kotlin = { 'ktlint' },
         sql = { 'pg_format' },
         python = { 'isort', 'black' },
         javascript = { 'prettier' },
