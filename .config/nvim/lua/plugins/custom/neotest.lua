@@ -10,12 +10,12 @@ return {
   config = function()
     require('neotest').setup {
       adapters = {
-require("neotest-java")({
+        require 'neotest-java' {
           -- Optional configuration for neotest-java
           ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
           -- junit_jar will be auto-downloaded if not found
           junit_jar = nil, -- let neotest-java handle the path automatically
-        })
+        },
       },
 
       -- General neotest configuration
@@ -96,8 +96,8 @@ require("neotest-java")({
         },
       },
     }
-
-    -- Keymaps for neotest
+  end,
+  keys = function()
     local neotest = require 'neotest'
 
     -- Test running keymaps
@@ -153,9 +153,9 @@ require("neotest-java")({
       neotest.run.stop()
     end, { desc = 'Stop running tests' })
 
-    vim.keymap.set("n", "<leader>ta", function()
+    vim.keymap.set('n', '<leader>ta', function()
       neotest.run.run(vim.fn.getcwd())
-    end, { desc = "Run all tests in project" })
+    end, { desc = 'Run all tests in project' })
     -- Watch tests (useful for TDD)
     vim.keymap.set('n', '<leader>tw', function()
       neotest.watch.toggle(vim.fn.expand '%')
