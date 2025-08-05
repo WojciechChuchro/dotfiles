@@ -1,33 +1,52 @@
 return {
-  -- https://github.com/ThePrimeagen/harpoon
   'ThePrimeagen/harpoon',
-  branch = 'master',
-  event = 'VeryLazy',
-  dependencies = {
-    -- https://github.com/nvim-lua/plenary.nvim
-    'nvim-lua/plenary.nvim',
-  },
-  opts = {
-    menu = {
-      width = vim.api.nvim_win_get_width(0) - 4,
-    },
-    tabline = true,
-  },
-  config = function()
-    vim.opt.showtabline = 2
+  branch = 'harpoon2',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  config = function(_, opts)
+    local harpoon = require 'harpoon'
+    harpoon:setup(opts)
+  end,
 
-    vim.keymap.set('n', '<leader>ha', require('harpoon.mark').add_file)
-    vim.keymap.set('n', '<C-e>', require('harpoon.ui').toggle_quick_menu)
+  keys = function()
+    local keys = {
+      {
+        '<leader>H',
+        function()
+          require('harpoon'):list():add()
+          vim.cmd 'redrawtabline' -- Refresh tabline after adding
+        end,
+        desc = 'Harpoon File',
+      },
+      {
+        '<C-e>',
+        function()
+          local harpoon = require 'harpoon'
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        desc = 'Harpoon Quick Menu',
+      },
+    }
+
+    -- Add Ctrl+1-9 mappings
     for i = 1, 9 do
-      vim.keymap.set('n', '<C-' .. i .. '>', function()
-        require('harpoon.ui').nav_file(i)
-      end, { desc = 'Harpoon file ' .. i })
+      table.insert(keys, {
+        '<C-' .. i .. '>',
+        function()
+          require('harpoon'):list():select(i)
+        end,
+        desc = 'Harpoon to File ' .. i,
+      })
     end
-    -- Your highlight customizations (these are correctly placed)
-    vim.cmd 'highlight! HarpoonInactive guibg=NONE guifg=#63698c'
-    vim.cmd 'highlight! HarpoonActive guibg=NONE guifg=white'
-    vim.cmd 'highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7'
-    vim.cmd 'highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7'
-    vim.cmd 'highlight! TabLineFill guibg=NONE guifg=white'
+
+    -- Add Ctrl+0 for 10th file
+    table.insert(keys, {
+      '<C-0>',
+      function()
+        require('harpoon'):list():select(10)
+      end,
+      desc = 'Harpoon to File 10',
+    })
+
+    return keys
   end,
 }
