@@ -1,5 +1,4 @@
 return {
-  enabled = false,
   -- https://github.com/nvim-telescope/telescope.nvim
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
@@ -68,7 +67,7 @@ return {
             preview_width = 0.5,
           },
         },
-      },
+     },
       -- pickers = {}
       extensions = {
         ['ui-select'] = {
