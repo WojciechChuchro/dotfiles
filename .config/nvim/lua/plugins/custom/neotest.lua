@@ -19,12 +19,6 @@ return {
       },
 
       -- General neotest configuration
-      discovery = {
-        enabled = true,
-        concurrent = 1,
-      },
-
-      -- Customize output window
       output = {
         enabled = true,
         open_on_run = 'short', -- "short" | "long" | false
@@ -43,58 +37,13 @@ return {
         signs = true,
       },
 
-      -- Icons for test results
-      icons = {
-        child_indent = '│',
-        child_prefix = '├',
-        collapsed = '─',
-        expanded = '╮',
-        failed = '✖',
-        final_child_indent = ' ',
-        final_child_prefix = '╰',
-        non_collapsible = '─',
-        passed = '✓',
-        running = '⟳',
-        running_animated = { '/', '|', '\\', '-', '/', '|', '\\', '-' },
-        skipped = '○',
-        unknown = '?',
-      },
-
-      -- Floating window configuration
       floating = {
         border = 'rounded',
-        max_height = 0.6,
-        max_width = 0.6,
+        max_height = 0.9,
+        max_width = 0.9,
         options = {},
       },
 
-      -- Summary window configuration
-      summary = {
-        enabled = true,
-        animated = true,
-        follow = true,
-        expand_errors = true,
-        mappings = {
-          attach = 'a',
-          clear_marked = 'M',
-          clear_target = 'T',
-          debug = 'd',
-          debug_marked = 'D',
-          expand = { '<CR>', '<2-LeftMouse>' },
-          expand_all = 'e',
-          jumpto = 'i',
-          mark = 'm',
-          next_failed = 'J',
-          output = 'o',
-          prev_failed = 'K',
-          run = 'r',
-          run_marked = 'R',
-          short = 'O',
-          stop = 'u',
-          target = 't',
-          watch = 'w',
-        },
-      },
     }
   end,
   keys = function()
