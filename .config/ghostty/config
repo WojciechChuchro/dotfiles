@@ -1,8 +1,9 @@
-font-family = JetBrainsMono Nerd Font
+# Font configuration
+font-family = "JetBrains Mono"
+font-size = 16
+font-style = normal
 
-# font-family = Iosevka Nerd Font
-# font-family = SFMono Nerd Font 
-font-size = 20
+cursor-style-blink = false
 theme = GruvboxDarkHard
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
