@@ -1,3 +1,3 @@
-require 'core.options'
-require 'core.lazy'
-require 'core.keymaps'
+require 'keymaps'
+require 'options'
+require 'plugins.lazy'
