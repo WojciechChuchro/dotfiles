@@ -1,172 +1,190 @@
-"" Base Settings
-"" ========================================================
+" ============================
+" ========= FUNCTIONS ========
+" ============================
 
-"Keeps 10 lines visible above and below the cursor when scrolling, providing context while navigating.
+" Helper to register WhichKey descriptions
+function! whichKey(key, desc)
+  let g:WhichKeyDesc_{substitute(a:key, '[^a-zA-Z0-9]', '_', 'g')} = a:key . " " . a:desc
+endfunction
+
+" ============================
+" ========= CORE SETTINGS ====
+" ============================
+
+" Scroll context
 set scrolloff=10
-"Displays line numbers on the left side of the editor.
-set linenumber
-"Show the current mode in the status bar
-set showmode
-"Show (partial) command in the status bar
-set showcmd
-"Show line numbers relative to the current line
-set relativenumber
-"Show line numbers. Maps to the editor's local setting in the View | Active Editor menu
+
+" Line numbers
 set number
-"Use case sensitive search if any character in the pattern is uppercase
+set relativenumber
+set linenumber
+
+" Status line
+set showmode
+set showcmd
+
+" Search
 set smartcase
-"Show where search pattern typed so far matches
 set incsearch
-"Highlight matches with the last search pattern
 set hlsearch
-"When on, prevents beeping on error
+
+" UI feedback
 set visualbell
-"Use system clipboard
+
+" Clipboard
 set clipboard+=unnamed
-"No use timeout for mapped key sequences
-set notimeout
+
+" Leader
 let mapleader = " "
 
-"" Plugin Settings
-"" ========================================================
+" ============================
+" ========= PLUGINS ==========
+" ============================
 
 set surround
 set highlightedyank
 set sneak
 set nerdtree
 set which-key
-let g:WhichKey_FontSize = 16
-let g:WhichKey_CommandColor = "#41ead4"
-let g:WhichKey_PrefixColor = "#f335b2"
-let g:WhichKey_SortOrder = "by_key_prefix_first"
-let g:WhichKeyDesc_leader = "<leader> Leader key"
 
-"" Key mappings
-"" ========================================================
+" WhichKey colors & styles
+let g:WhichKey_CommandColor = "#b8bb26"
+let g:WhichKey_PrefixColor  = "#fb4934"
+let g:WhichKey_CommandStyle = "bold"
+let g:WhichKey_PrefixStyle  = "italic"
 
-inoremap jk <Esc>
+" ============================
+" ========= NAVIGATION =======
+" ============================
 
-" Half page down/up with center
+" Half page scroll and center
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-" Tab navigation
-nnoremap <A-n> :tabnext<CR>
-nnoremap <A-p> :tabprev<CR>
+map <C-j> <Action>(EditorDown)
+map <C-k> <Action>(EditorUp)
 
-" Pane navigation
-nnoremap <A-h> <C-w>h
-nnoremap <A-l> <C-w>l
-nnoremap <A-k> <C-w>k
-nnoremap <A-j> <C-w>j
+" Move lines
+vmap J <Action>(MoveLineDown)
+vmap K <Action>(MoveLineUp)
 
-" Jump between methods
-nnoremap [[ <Action>(MethodUp)
-nnoremap ]] <Action>(MethodDown)
+" ============================
+" ========= HIGHLIGHT ========
+" ============================
 
-" Easy visual indentation
-vnoremap < <gv
-vnoremap > >gv
+call whichKey("<leader>u", "Delete highlight after vim search")
+nnoremap <Leader>u :noh<CR>
 
-" Popup navigation
-inoremap <C-j> <Action>(PopupMenu-selectNext)
-inoremap <C-k> <Action>(PopupMenu-selectPrev)
+" ============================
+" ========= COMMENT ==========
+" ============================
 
-"" Leader commands
-"" ========================================================
+call whichKey("<leader>c", "Comment line")
+map <leader>c <Action>(CommentByLineComment)
 
-" Disable highlight after search
-let g:WhichKeyDesc_delete_highlight_after_search = "<ESC><ESC> Delete highlight after vim search"
-nnoremap <ESC><ESC> :noh<CR>
+" ============================
+" ========= FOLDING ==========
+" ============================
 
-" Comment lines
-let g:WhichKeyDesc_comment = "<leader>c Comment line"
-map <leader>c <action>(CommentByLineComment)
+call whichKey("<leader>z",  "Folding")
+call whichKey("<leader>zc", "Fold all regions")
+call whichKey("<leader>zo", "Unfold all regions")
 
-" Open NERDTree (use q to exit)
-let g:WhichKeyDesc_nerdtree = "<leader>n NERDTree"
-let g:WhichKeyDesc_nerdtree_toggle = "<leader>nt Toggle NERDTree"
-map <leader>nt :NERDTreeToggle<CR>
-let g:WhichKeyDesc_nerdtree_focus = "<leader>nf Focus NERDTree"
-map <leader>nf :NERDTreeFocus<CR>
-let g:WhichKeyDesc_nerdtree_close = "<leader>nc Close NERDTree"
-map <leader>nc :NERDTreeClose<CR>
-let g:WhichKeyDesc_nerdtree_find = "<leader>nq Find current file"
-map <leader>nq :NERDTreeFind<CR>
-let g:WhichKeyDesc_nerdtree_refresh = "<leader>nr Refresh NERDTree"
-map <leader>nr :NERDTreeRefreshRoot<CR>
+map <leader>zc <Action>(CollapseAllRegions)
+map <leader>zo <Action>(ExpandAllRegions)
 
-" Folding
-let g:WhichKeyDesc_fold = "<leader>z Folding"
-let g:WhichKeyDesc_fold_all = "<leader>zc Fold all regions"
-let g:WhichKeyDesc_unfold_all = "<leader>zo Unfold all regions"
-map <leader>zc :action CollapseAllRegions<CR>
-map <leader>zo :action ExpandAllRegions<CR>
+" ============================
+" ========= WINDOW MANAGEMENT =
+" ============================
 
-" Window splits
-let g:WhichKeyDesc_window = "<leader>w Window splits"
-let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
-let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
-let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
-let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+
+call whichKey("<leader>w",  "Window splits")
+call whichKey("<leader>wv", "Split vertically")
+call whichKey("<leader>wh", "Split horizontally")
+call whichKey("<leader>wu", "Unsplit")
+call whichKey("<leader>wm", "Move editor to opposite tab group")
+
 map <leader>wv <Action>(SplitVertically)
-map <leader>ws <Action>(SplitHorizontally)
+map <leader>wh <Action>(SplitHorizontally)
 map <leader>wu <Action>(Unsplit)
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
-" Display options
-let g:WhichKeyDesc_display = "<leader>d Display options"
-let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
-let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
-let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
-map <leader>dd <action>(ToggleDistractionFreeMode)
-map <leader>dz <action>(ToggleZenMode)
-map <leader>df <action>(ToggleFullScreen)
+map <C-l> <Action>(NextSplitter)
+map <C-h> <Action>(PrevSplitter)
 
-" Actions
-let g:WhichKeyDesc_action= "<leader>a Actions"
-let g:WhichKeyDesc_action_context_menu = "<leader>am Open context menu"
-let g:WhichKeyDesc_action_search = "<leader>as Open command modal"
-let g:WhichKeyDesc_action_show_hover_info = "gh Show hover info"
-map <leader>am <action>(ShowIntentionActions)
-map <leader>as <action>(SearchEverywhere)
+map <C-k> <Action>(NextSplitter)
+map <C-j> <Action>(PrevSplitter)
+
+" Maximize editor
+call whichKey("<leader>m", "Maximize editor window and hide panels")
+map <leader>m <Action>(MaximizeEditorInSplitAction)
+map <leader>m <Action>(HideAllWindows)
+
+" ============================
+" ========= DISPLAY ==========
+" ============================
+
+call whichKey("<leader>d",  "Display options")
+call whichKey("<leader>dz", "Toggle Zen mode")
+call whichKey("<leader>dd", "Toggle Distraction-Free mode")
+call whichKey("<leader>df", "Toggle full screen")
+
+map <leader>dz <Action>(ToggleZenMode)
+map <leader>dd <Action>(ToggleDistractionFreeMode)
+map <leader>df <Action>(ToggleFullScreen)
+
+" ============================
+" ========= ACTIONS ==========
+" ============================
+
+call whichKey("<leader>a",  "Actions")
+call whichKey("<leader>am", "Open context menu")
+call whichKey("<leader>as", "Open command modal")
+call whichKey("gh",         "Show hover info")
+call whichKey("<leader>ar", "Reload ideavimrc")
+call whichKey("<leader>af", "Reformat code")
+
 nmap gh <Action>(ShowHoverInfo)
+map <leader>am <Action>(ShowIntentionActions)
+map <leader>as <Action>(SearchEverywhere)
+map <leader>ar <Action>(IdeaVim.ReloadVimRc.reload)
+map <leader>af <Action>(ReformatCode)
 
-" File navigation
-let g:WhichKeyDesc_file_nav = "<leader>s [S]earch"
-let g:WhichKeyDesc_file_nav_goto_file = "<leader>sf [S]earch [F]ile"
-let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>sr [S]earch [R]ecent files"
-let g:WhichKeyDesc_file_quickLook = "<leader><leader> Recent files"
-let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>sl [S]earch recent [L]ocations"
-let g:WhichKeyDesc_file_find_usages = "<leader>su [S]earch [U]sages"
-let g:WhichKeyDesc_file_search_in_file_path = "<leader>sp [S]earch in [P]ath"
-map <leader>sf <action>(GotoFile)
-map <leader>sr <action>(RecentFiles)
-map <leader><leader> <Action>(RecentFiles)
-nmap <leader>su <Action>(FindUsages)
-map <leader>sl <action>(RecentLocations)
-map <leader>sp <action>(FindInPath)
+" ============================
+" ========= FILE NAVIGATION ==
+" ============================
 
-" ??????
-let g:WhichKeyDesc_file_nav_scratch_file = "<leader>ss Create new scratch file"
-map <leader>ss <action>(NewScratchFile)
+call whichKey("<leader>f",  "Find")
+call whichKey("<leader>ff", "Find file")
+call whichKey("<leader>fe", "Find everywhere")
+call whichKey("<leader>fr", "Find recent files")
+call whichKey("<leader>fu", "Find usages")
+call whichKey("<leader>fl", "Find recent locations")
+call whichKey("<leader>fg", "Find grep")
+call whichKey("<leader>fP", "Edit ideavimrc")
+call whichKey("<leader>ss", "Create new scratch file")
 
-" Close active tab
-let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
-map <leader>q <action>(CloseContent)
+map <leader>ff <Action>(GotoFile)
+map <leader>fe <Action>(SearchEverywhere)
+map <leader>fr <Action>(RecentFiles)
+map <leader>fu <Action>(FindUsages)
+map <leader>fl <Action>(RecentLocations)
+map <leader>fg <Action>(FindInPath)
+nnoremap <leader>fP :e ~/.ideavimrc<CR>
+map <leader>ss <Action>(NewScratchFile)
 
-" Close all active tabs
-let g:WhichKeyDesc_close_all_tabs = "<leader>Q Close all active tab"
-nnoremap <Leader>Q :action CloseAllEditors<CR>
+" ============================
+" ========= REFACTORING =====
+" ============================
 
-" Refactoring
-let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
-let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename element"
-let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract method"
-let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce variable"
-let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce field"
-let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change signature"
-let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
+call whichKey("<leader>r",  "Refactoring menu")
+call whichKey("<leader>rn", "Rename element")
+call whichKey("<leader>rm", "Extract method")
+call whichKey("<leader>rv", "Introduce variable")
+call whichKey("<leader>rf", "Introduce field")
+call whichKey("<leader>rs", "Change signature")
+call whichKey("<leader>rr", "Open refactorings list")
+
 map <leader>rn <Action>(RenameElement)
 map <leader>rm <Action>(ExtractMethod)
 map <leader>rv <Action>(IntroduceVariable)
@@ -174,52 +192,64 @@ map <leader>rf <Action>(IntroduceField)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 
-" Go to code
-let g:WhichKeyDesc_goto = "<leader>g Go to X"
-let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Definition"
-let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Definition"
-let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
-let g:WhichKeyDesc_goto_usages = "<leader>gu Go to Usages"
-let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
-let g:WhichKeyDesc_goto_back = "<leader>gb Go Back"
-let g:WhichKeyDesc_goto_forward = "<leader>gf Go Forward"
+" ============================
+" ========= GOTO ============
+" ============================
+
+call whichKey("<leader>g",  "Go to...")
+call whichKey("<leader>gd", "Definition")
+call whichKey("<leader>gy", "Type definition")
+call whichKey("<leader>gi", "Implementation")
+call whichKey("<leader>gu", "Usages")
+call whichKey("<leader>gt", "Test")
+call whichKey("<leader>gb", "Back")
+call whichKey("<leader>gf", "Forward")
+
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>gy <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
 nmap <leader>gu <Action>(ShowUsages)
 nmap <leader>gt <Action>(GotoTest)
-nmap <leader>gf <Action>(Back)
-nmap <leader>gb <Action>(Forward)
+nmap <leader>gb <Action>(Back)
+nmap <leader>gf <Action>(Forward)
 
-" Errors
-let g:WhichKeyDesc_errors = "<leader>e Error navigation"
-let g:WhichKeyDesc_errors_next = "<leader>en Go to next error in solution"
-let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
-map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
-map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+" ============================
+" ========= ERRORS ==========
+" ============================
 
-" Harpoon
-let g:WhichKeyDesc_action_HarpoonerOpenFile0 = "<C-1> Open Harpoon File 1"
-let g:WhichKeyDesc_action_HarpoonerOpenFile1 = "<C-2> Open Harpoon File 2"
-let g:WhichKeyDesc_action_HarpoonerOpenFile2 = "<C-3> Open Harpoon File 3"
-let g:WhichKeyDesc_action_HarpoonerOpenFile3 = "<C-4> Open Harpoon File 4"
-let g:WhichKeyDesc_action_HarpoonerQuickMenu = "<C-e> Open Harpoon Quick Menu"
-let g:WhichKeyDesc_action_Harpooner = "<leader>h Harpooner"
-let g:WhichKeyDesc_action_HarpoonerAddFile = "<leader>ha Add File to Harpoon"
-nmap <C-1> <action>(HarpoonerOpenFile0)
-nmap <C-2> <action>(HarpoonerOpenFile1)
-nmap <C-3> <action>(HarpoonerOpenFile2)
-nmap <C-4> <action>(HarpoonerOpenFile3)
-nmap <C-5> <action>(HarpoonerOpenFile4)
-nmap <C-6> <action>(HarpoonerOpenFile5)
-nmap <C-7> <action>(HarpoonerOpenFile6)
-nmap <C-8> <action>(HarpoonerOpenFile7)
-nmap <C-9> <action>(HarpoonerOpenFile8)
-nmap <C-0> <action>(HarpoonerOpenFile9)
-nmap <C-e> <action>(HarpoonerQuickMenu)
-nmap <leader>ha <action>(HarpoonerAddFile)
+call whichKey("<leader>e",  "Error navigation")
+call whichKey("<leader>en", "Go to next error")
+call whichKey("<leader>ep", "Go to previous error")
 
-" Maximize the editor window and hide side panels
-let g:WhichKeyDesc_maximize_window = "<leader>m Maximize editor window and hide panels"
-map <leader>m :action MaximizeEditorInSplitAction<CR>
-map <leader>m :action HideAllWindows<CR>
+map <leader>en <Action>(GotoNextError)
+map <leader>ep <Action>(GotoPreviousError)
+
+" ============================
+" ========= HARPOON ==========
+" ============================
+
+call whichKey("<leader>h",  "Harpooner")
+call whichKey("<leader>ha", "Add File to Harpoon")
+call whichKey("<C-1>", "Open Harpoon File 1")
+call whichKey("<C-2>", "Open Harpoon File 2")
+call whichKey("<C-3>", "Open Harpoon File 3")
+call whichKey("<C-4>", "Open Harpoon File 4")
+call whichKey("<C-5>", "Open Harpoon File 5")
+call whichKey("<C-6>", "Open Harpoon File 6")
+call whichKey("<C-7>", "Open Harpoon File 7")
+call whichKey("<C-8>", "Open Harpoon File 8")
+call whichKey("<C-9>", "Open Harpoon File 9")
+call whichKey("<C-e>", "Open Harpoon Quick Menu")
+
+nmap <C-1> <Action>(HarpoonerOpenFile0)
+nmap <C-2> <Action>(HarpoonerOpenFile1)
+nmap <C-3> <Action>(HarpoonerOpenFile2)
+nmap <C-4> <Action>(HarpoonerOpenFile3)
+nmap <C-5> <Action>(HarpoonerOpenFile4)
+nmap <C-6> <Action>(HarpoonerOpenFile5)
+nmap <C-7> <Action>(HarpoonerOpenFile6)
+nmap <C-8> <Action>(HarpoonerOpenFile7)
+nmap <C-9> <Action>(HarpoonerOpenFile8)
+nmap <C-0> <Action>(HarpoonerOpenFile9)
+nmap <C-e> <Action>(HarpoonerQuickMenu)
+nmap <leader>ha <Action>(HarpoonerAddFile)
